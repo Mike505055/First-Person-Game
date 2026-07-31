@@ -7,6 +7,7 @@ public class Playermovement : MonoBehaviour
     public float jumpHeight = 1.5f;
     public float gravity = -20f;
     public float mouseSensitivity = 200f;
+    float cameraXrotation;
     private CharacterController controller;
     private float verticalVelocity;
 
@@ -30,8 +31,10 @@ public class Playermovement : MonoBehaviour
         // camera controls
         float mouseX = Input.GetAxis("Mouse X")*mouseSensitivity*Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        cameraXrotation -= mouseY;
+        cameraXrotation = Mathf.Clamp(cameraXrotation, -90f, 90f);
         transform.Rotate(Vector3.up * mouseX);
-        Camera.main.transform.Rotate(Vector3.right * mouseY);
+        Camera.main.transform.localRotation = Quaternion.Euler(cameraXrotation, 0, 0);
         // Takes in the input and moves
         float xInput = Input.GetAxisRaw("Horizontal");
         float zInput = Input.GetAxisRaw("Vertical");
