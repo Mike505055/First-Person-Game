@@ -4,27 +4,39 @@ public class playerSpellCastimg : MonoBehaviour
 {
     public int currentSpell;
     public string[] spellName;
+    public ParticleSystem[] gemVFX;
     public Material[] gemColor;
-    public Renderer gemRenderer;
+    public Renderer staffRenderer;
+    public GameObject spellAttackPrefab;
+    public Transform gemAnchor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      for(int i =0; i < gemRenderer.materials.Length; i++)
-        {
-            print("at index " + i +" material " + gemRenderer.materials[i]);
-        }
+        SwapSpell(currentSpell);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        { 
+            Instantiate(spellAttackPrefab, gemAnchor.position,gemAnchor.rotation);
+        } 
     }
     public void SwapSpell(int newSpell)
     {
         currentSpell = newSpell;
         print(spellName[currentSpell]);
-        gemRenderer.materials[1]=gemColor[currentSpell];
+        Material[] currentMaterials = staffRenderer.materials;
+        currentMaterials[1] = gemColor[currentSpell];
+        staffRenderer.materials = currentMaterials;
+        for (int i = 0; i < gemVFX.Length; i++)
+        {
+            gemVFX[i].Stop();
+        }
+      
 
+        gemVFX[currentSpell].Play();
     }
 }
