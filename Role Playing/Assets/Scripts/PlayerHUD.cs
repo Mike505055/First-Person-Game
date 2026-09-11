@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
     public GameObject spellBookPanel;
+    public playerSpellCastimg myspells;
+    public Image manaBar;
     public bool spellBookOpen = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,6 +16,7 @@ public class PlayerHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        manaBar.fillAmount = myspells.currentMana / myspells.maxMana;
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleSpellBook();

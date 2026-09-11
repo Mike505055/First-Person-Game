@@ -10,20 +10,33 @@ public class playerSpellCastimg : MonoBehaviour
     
     public Transform spellSpawn;
     public Animator staffAnim;
+    public float currentMana;
+    public float maxMana =10;
+    public float manaRegen = 0.25f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SwapSpell(currentSpell);
+        currentMana = maxMana;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (currentMana < maxMana)
+        {
+            
+            currentMana += Time.deltaTime*manaRegen;
+            
+        }
+        
+        if (Input.GetMouseButtonDown(0) && currentMana >= spells[currentSpell].manaCost) 
         {
             Instantiate(spells[currentSpell].attackPrefab, spellSpawn.position,spellSpawn.rotation);
             staffAnim.SetTrigger("attack");
+            currentMana -= spells[currentSpell].manaCost;
+            print(currentMana);
         } 
     }
     public void SwapSpell(int newSpell)

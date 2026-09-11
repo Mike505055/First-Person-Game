@@ -5306,6 +5306,9 @@ MonoBehaviour:
   staffRenderer: {fileID: 897885235}
   spellSpawn: {fileID: 1094744376}
   staffAnim: {fileID: 897885237}
+  currentMana: 0
+  maxMana: 10
+  manaRegen: 0.25
 --- !u!114 &307903552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5319,6 +5322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHUD
   spellBookPanel: {fileID: 442792963}
+  myspells: {fileID: 307903551}
+  manaBar: {fileID: 1247778051}
   spellBookOpen: 0
 --- !u!1 &330585543
 GameObject:
@@ -5924,7 +5929,7 @@ MonoBehaviour:
   spellName: Fireball
   attackPrefab: {fileID: 8056023285026135120, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
   gemMaterial: {fileID: 2100000, guid: 0a830e495b953f24998e7a2c475fa318, type: 2}
-  manaCost: 0
+  manaCost: 1
   damageAmount: 0
 --- !u!1 &681410332 stripped
 GameObject:
@@ -6192,7 +6197,7 @@ MonoBehaviour:
   spellName: Ice Storm
   attackPrefab: {fileID: 3341553090082229521, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
   gemMaterial: {fileID: 2100000, guid: 8350b46a33be228409eacb41dcb0e9e3, type: 2}
-  manaCost: 0
+  manaCost: 1
   damageAmount: 0
 --- !u!1 &1041576179
 GameObject:
@@ -11335,6 +11340,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246731444}
   m_CullTransparentMesh: 1
+--- !u!1 &1247778049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247778050}
+  - component: {fileID: 1247778052}
+  - component: {fileID: 1247778051}
+  m_Layer: 5
+  m_Name: Manabar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1247778050
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247778049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1763984911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -35}
+  m_SizeDelta: {x: 500, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1247778051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247778049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.98471725, g: 0.98490566, b: 0.96446425, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f37e69c5f2b189746974362f9b25aca1, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1247778052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247778049}
+  m_CullTransparentMesh: 1
 --- !u!1 &1275085280
 GameObject:
   m_ObjectHideFlags: 0
@@ -11382,7 +11462,7 @@ MonoBehaviour:
   spellName: Lightning Bolt
   attackPrefab: {fileID: 2749661656373796745, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
   gemMaterial: {fileID: 2100000, guid: b5729b8ce031c914999edbc715866e2f, type: 2}
-  manaCost: 0
+  manaCost: 1
   damageAmount: 0
 --- !u!1 &1406724418
 GameObject:
@@ -21322,6 +21402,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 442792964}
+  - {fileID: 1247778050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -21530,177 +21611,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 897885237}
   m_SourcePrefab: {fileID: 100100000, guid: ccff975e05d6e1e48bda3a0e557947b8, type: 3}
---- !u!1001 &244553169430346731
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2749661656373796745, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_Name
-      value: Lightning bolt projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.256
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9205
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7886726503173988766, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 796a706e857dc9e4797a967250ed16b9, type: 3}
---- !u!1001 &3065012784188243372
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.321
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9205
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808486368757324118, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341553090082229521, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
-      propertyPath: m_Name
-      value: Ice storm projectile
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32c0fc104b9776b418c4d89877ed336e, type: 3}
---- !u!1001 &7498943328319873756
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.844
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9205
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520793281350899489, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056023285026135120, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
-      propertyPath: m_Name
-      value: FireBall projectile
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2ba8ebf70d4b12143b0e4d7c021fbe22, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -21711,6 +21621,3 @@ SceneRoots:
   - {fileID: 307903549}
   - {fileID: 1763984911}
   - {fileID: 455612702}
-  - {fileID: 7498943328319873756}
-  - {fileID: 244553169430346731}
-  - {fileID: 3065012784188243372}
